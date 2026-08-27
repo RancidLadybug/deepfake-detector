@@ -17,7 +17,7 @@ from PIL import Image
 
 from detect import load_model, decide_verdict, MODEL_ID
 
-st.set_page_config(page_title="Image Authenticity Checker", page_icon="🔍", layout="centered")
+st.set_page_config(page_title="TrueLens", page_icon="🔍", layout="centered")
 
 
 @st.cache_resource(show_spinner="Loading model (first run downloads it, then it's cached)...")
@@ -25,7 +25,7 @@ def get_pipeline():
     return load_model()
 
 
-st.title("🔍 Image Authenticity Checker")
+st.title("🔍 TrueLens")
 st.caption(
     f"Proof-of-concept using the pretrained model `{MODEL_ID}`. "
     "Not a certified detector — treat results as a screening signal, not "
