@@ -1,0 +1,9 @@
+# Core ML/image packages for the proof-of-concept.
+# NOTE: install torch separately first using the command in README.md
+# (CPU-only build recommended unless you have an NVIDIA GPU + CUDA set up).
+transformers>=4.42,<5.0
+pillow>=10.0
+numpy>=1.26,<2.0
+accelerate>=0.30
+safetensors>=0.4
+streamlit>=1.35
