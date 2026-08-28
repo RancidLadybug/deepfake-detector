@@ -6,17 +6,25 @@ Simple proof-of-concept image authenticity checker.
 Uses ONE pretrained Hugging Face model that natively classifies images into
 three categories directly (no combining logic needed):
 
-    prithivMLmods/AI-vs-Deepfake-vs-Real
-    -> ViT-based classifier trained specifically for: Artificial (AI-generated),
+    prithivMLmods/AI-vs-Deepfake-vs-Real-Siglip2
+    -> SigLIP2-based classifier trained specifically for: Artificial (AI-generated),
        Deepfake (manipulated), or Real.
-    -> Self-reported accuracy on its own test set: ~97.5% overall.
+    -> This is the creator's updated 2nd-generation model. Their original
+       ViT-based version (AI-vs-Deepfake-vs-Real, without "-Siglip2") was
+       trained on a dataset the creator says is 5-6 years old; this version
+       uses much more recent training data (oldest entries ~1.5-2 years old),
+       which matters a lot for a fast-moving space like deepfake/AI-image
+       detection where new generators keep appearing.
 
 IMPORTANT LIMITATION (be honest with yourself about this): like any
 pretrained classifier, its accuracy depends heavily on how similar your
 test image is to what it was trained on. It is a community-trained model
-without a published paper/dataset audit, so treat results as a screening
-signal, not a certified verdict — especially against very recent or
-high-quality generators/deepfakes it may not have seen examples of.
+without a published paper/independently-audited dataset, so treat results
+as a screening signal, not a certified verdict — especially against very
+recent or high-quality generators/deepfakes it may not have seen examples of.
+We have not independently measured this model's accuracy ourselves; do not
+state a specific accuracy percentage without running your own test and
+citing that as YOUR result, not the model's.
 
 Usage:
     python detect.py test_images/example.jpg
@@ -30,7 +38,7 @@ import os
 import sys
 from datetime import datetime
 
-MODEL_ID = "prithivMLmods/AI-vs-Deepfake-vs-Real"
+MODEL_ID = "prithivMLmods/AI-vs-Deepfake-vs-Real-Siglip2"
 
 RESULTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
 
